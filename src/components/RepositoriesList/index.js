@@ -5,11 +5,8 @@ import {
   Container,
   Content,
   DataGrid,
-  Title,
   Paginacao,
   Arrows,
-  PopUp,
-  PopUpBotoes,
   DeleteAll,
 } from "./styles.js";
 
@@ -17,16 +14,18 @@ import Requests from "../../services/requests.js";
 
 import { FaTrashAlt } from "react-icons/fa";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import InputSearch from "../InputSearch/index.js";
 
 const RepositoriesList = () => {
   const [page, setPage] = useState(0);
   const [repositories, setRepositories] = useState([]);
   const [repositoriesPage, setRepositoriesPage] = useState([]);
+  const [search, setSearch] = useState("");
   const limit = 7;
 
   useEffect(() => {
     loadContent();
-  }, [repositories, setRepositories, repositoriesPage, setRepositoriesPage]);
+  }, []);
 
   const handlePageAble = (button) => {
     switch (button) {
@@ -80,6 +79,22 @@ const RepositoriesList = () => {
       });
   };
 
+  const handleSearch = () => {
+    Requests.getReposName(search).then((res) => {
+      if (res) {
+        console.log(res);
+        let actualContent = [];
+        for (let i = limit * page; i < limit * page + limit; i++) {
+          if (res[i]) {
+            actualContent.push(res[i]);
+          }
+        }
+        setRepositories(res);
+        setRepositoriesPage(actualContent);
+      }
+    });
+  };
+
   const loadContent = () => {
     Requests.getRepos()
       .then((res) => {
@@ -106,11 +121,17 @@ const RepositoriesList = () => {
     <Container>
       <Toaster />
       <Content>
-        <Title>Pesquise o repositório</Title>
+        <InputSearch
+          handleSearch={() => {
+            search !== "" ? handleSearch() : loadContent();
+          }}
+          search={search}
+          setSearch={setSearch}
+        ></InputSearch>
 
         {repositoriesPage.map((element, i) => {
           return (
-            <DataGrid>
+            <DataGrid onClick={() => console.log("aqui acabou")}>
               <p>{element.name}</p>
 
               <button

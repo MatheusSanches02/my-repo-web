@@ -39,6 +39,11 @@ export const DataGrid = styled.div`
   margin-left: 10px;
   margin-right: 10px;
   margin-top: 15px;
+  :hover {
+    cursor: pointer;
+    padding: 6px;
+    transition: 0.2s;
+  }
   p {
     width: 100%;
     color: var(--color-text);

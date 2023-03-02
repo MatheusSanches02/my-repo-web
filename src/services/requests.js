@@ -98,6 +98,34 @@ class Requests {
       });
     return content;
   };
+
+  static getFavorites = async () => {
+    let content;
+    await api
+      .get("/favorite")
+      .then((res) => {
+        const response = res.data;
+        content = response;
+      })
+      .catch((res, err) => {
+        return err;
+      });
+    return content;
+  };
+
+  static addFavorite = async (id) => {
+    let content;
+    await api
+      .post("/addFavorite", id)
+      .then((res) => {
+        const response = res.data;
+        content = response;
+      })
+      .catch((res, err) => {
+        return err;
+      });
+    return content;
+  };
 }
 
 export default Requests;
