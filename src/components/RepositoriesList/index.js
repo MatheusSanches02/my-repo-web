@@ -1,6 +1,6 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import toast, { Toaster } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 import {
   Container,
   Content,
@@ -17,6 +17,7 @@ import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import InputSearch from "../InputSearch/index.js";
 
 const RepositoriesList = () => {
+  const navigate = useNavigate();
   const [page, setPage] = useState(0);
   const [repositories, setRepositories] = useState([]);
   const [repositoriesPage, setRepositoriesPage] = useState([]);
@@ -131,7 +132,12 @@ const RepositoriesList = () => {
 
         {repositoriesPage.map((element, i) => {
           return (
-            <DataGrid onClick={() => console.log("aqui acabou")}>
+            <DataGrid
+              onClick={() => {
+                sessionStorage.setItem("elemento", JSON.stringify(element));
+                navigate("/details");
+              }}
+            >
               <p>{element.name}</p>
 
               <button

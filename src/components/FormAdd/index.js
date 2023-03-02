@@ -9,7 +9,7 @@ import toast, { Toaster } from "react-hot-toast";
 import { Dots } from "react-activity";
 import "react-activity/dist/library.css";
 
-const FormCadastro = ({ token }) => {
+const FormCadastro = () => {
   const navigate = useNavigate();
 
   const [name, setName] = useState("");
