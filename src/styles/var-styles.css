@@ -1,0 +1,49 @@
+/* colors */
+:root {
+  --color-white: #fff;
+  --color-black: #000;
+  --color-lightblack: #5c5c5c;
+  --color-text: #68837f;
+  --color-lightgrey: #ecefee;
+  --color-grey: #d9d9d9;
+  --color-mediumgrey: #a8b1af;
+  --color-primary: #00544d;
+  --color-details: #cbe5e3;
+  --color-red: #f4245f;
+  --color-yellow: #d5ae6a;
+  --color-green: #4eaa8c;
+  --color-blue: #0f79f1;
+}
+
+/* gradient */
+:root {
+  --gradient-primary: linear-gradient(90deg, #00544d 0%, #30978f 100%);
+  --gradient-primary-reverse: linear-gradient(-90deg, #00544d 0%, #30978f 100%);
+  --gradient-secundary: linear-gradient(90deg, #c09d5f 0%, #d5ae6a 100%);
+}
+
+/* shadows */
+:root {
+  --shadow-box: 0px 5px 35px rgba(0, 0, 0, 0.25);
+  --shadow-button: 0px 5px 20px rgba(0, 0, 0, 0.25);
+  --shadow-menu: 0px 0px 50px 10px rgba(0, 0, 0, 0.05);
+  --shadow-popup: 0px 0px 15px 1000px rgba(0, 0, 0, 0.5);
+}
+
+/* fonts */
+:root {
+  --font-primary: "Century Gothic";
+}
+
+/* font size */
+:root {
+  --font-size-x-small: 10px;
+  --font-size-small: 12px;
+  --font-size-normal: 13px;
+  --font-size-large: 14px;
+  --font-size-x-large: 16px;
+  --font-size-xx-large: 18px;
+  --font-size-xx-medium-large: 22px;
+  --font-size-xxx-large: 28px;
+  --font-size-xxxx-large: 36px;
+}
