@@ -5,9 +5,7 @@ import { Container, DivHeader } from "./styles.js";
 import HeaderMenu from "../../components/HeaderMenu/index.js";
 import { Outlet } from "react-router-dom";
 
-//component
 const Home = () => {
-  //view do component
   return (
     <Container>
       <DivHeader>

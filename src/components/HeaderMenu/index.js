@@ -33,7 +33,12 @@ const HeaderMenu = () => {
           </button>
         </Navigate>
 
-        <LogoHeader src={ProfilePicture} />
+        <LogoHeader
+          src={ProfilePicture}
+          onClick={() => {
+            navigate("/");
+          }}
+        />
       </Header>
     </Container>
   );

@@ -48,4 +48,8 @@ export const LogoHeader = styled.img`
   height: auto;
   margin-right: 30px;
   border-radius: 50px;
+
+  :hover {
+    cursor: pointer;
+  }
 `;
