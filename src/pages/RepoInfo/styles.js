@@ -31,19 +31,20 @@ export const DataGrid = styled.div`
   }
 `;
 
-export const IconHeart = styled.div`
+export const Icons = styled.div`
   display: flex;
+  flex-direction: row;
   width: 100%;
   justify-content: flex-end;
+`;
+
+export const IconHeart = styled.div`
   :hover {
     cursor: pointer;
   }
 `;
 
 export const Trash = styled.div`
-  display: flex;
-  width: 100%;
-  justify-content: flex-end;
   :hover {
     cursor: pointer;
   }

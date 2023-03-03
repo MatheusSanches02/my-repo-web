@@ -73,9 +73,9 @@ class Requests {
     }
   };
 
-  static addFavorite = async (id) => {
+  static addFavorite = async (object) => {
     try {
-      const response = await api.post("/addFavorite", id);
+      const response = await api.post("/addFavorite", object);
       return response.data;
     } catch (err) {
       console.log(err.message);

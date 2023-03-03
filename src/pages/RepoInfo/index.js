@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { Container, Content, DataGrid, IconHeart, Trash } from "./styles.js";
+import {
+  Container,
+  Content,
+  DataGrid,
+  IconHeart,
+  Trash,
+  Icons,
+} from "./styles.js";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import Requests from "../../services/requests.js";
 import toast, { Toaster } from "react-hot-toast";
@@ -34,7 +41,9 @@ const RepoInfo = () => {
         console.log(res);
         if (res) {
           toast.success("Repositório excluido com sucesso!");
-          navigate("/repositories");
+          setTimeout(() => {
+            navigate("/repositories");
+          }, 1000);
         } else {
           toast.error("Não foi possível excluir o repositório");
         }
@@ -51,21 +60,23 @@ const RepoInfo = () => {
       <Toaster />
       <Content>
         <DataGrid>
-          <Trash onClick={() => handleDelete(selectedRepository)}>
-            <FaTrashAlt size={24} />
-          </Trash>
-          <IconHeart
-            onClick={() => {
-              handleCreate();
-              setFavorite(!favorite);
-            }}
-          >
-            {favorite ? (
-              <AiFillHeart size={24} />
-            ) : (
-              <AiOutlineHeart size={24} />
-            )}
-          </IconHeart>
+          <Icons>
+            <Trash onClick={() => handleDelete(selectedRepository)}>
+              <FaTrashAlt size={24} />
+            </Trash>
+            <IconHeart
+              onClick={() => {
+                handleCreate();
+                setFavorite(!favorite);
+              }}
+            >
+              {favorite ? (
+                <AiFillHeart size={24} />
+              ) : (
+                <AiOutlineHeart size={24} />
+              )}
+            </IconHeart>
+          </Icons>
           <p>
             <b>Nome:</b> {selectedRepository.name}
           </p>
