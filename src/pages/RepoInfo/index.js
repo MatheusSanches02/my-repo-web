@@ -29,8 +29,10 @@ const RepoInfo = () => {
 
   const handleCreate = () => {
     Requests.addFavorite(selectedRepository).then((res) => {
-      if (res.id) {
-        console.log(res.id);
+      if (res) {
+        toast.success("Repositório favoritado com sucesso!");
+      } else {
+        toast.error("Não foi possível favoritar o repositório");
       }
     });
   };
@@ -38,7 +40,6 @@ const RepoInfo = () => {
   const handleDelete = (item) => {
     Requests.deleteReposId(item.id)
       .then((res) => {
-        console.log(res);
         if (res) {
           toast.success("Repositório excluido com sucesso!");
           setTimeout(() => {
