@@ -1,10 +1,14 @@
 import React from "react";
 import { Container } from "./styles.js";
 
-//import FavoritesList from "../../components/FavoritesList/index.js";
+import FavoritesList from "../../components/FavoritesList/index.js";
 
 const Favorites = () => {
-  return <Container></Container>;
+  return (
+    <Container>
+      <FavoritesList></FavoritesList>
+    </Container>
+  );
 };
 
 export default Favorites;

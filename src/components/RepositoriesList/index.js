@@ -12,7 +12,6 @@ import {
 
 import Requests from "../../services/requests.js";
 
-import { FaTrashAlt } from "react-icons/fa";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import InputSearch from "../InputSearch/index.js";
 
@@ -22,11 +21,11 @@ const RepositoriesList = () => {
   const [repositories, setRepositories] = useState([]);
   const [repositoriesPage, setRepositoriesPage] = useState([]);
   const [search, setSearch] = useState("");
-  const limit = 7;
+  const limit = 5;
 
   useEffect(() => {
     loadContent();
-  }, []);
+  }, [page]);
 
   const handlePageAble = (button) => {
     switch (button) {
@@ -46,22 +45,6 @@ const RepositoriesList = () => {
       default:
         break;
     }
-  };
-
-  const handleDelete = (item) => {
-    Requests.deleteReposId(item.id)
-      .then((res) => {
-        console.log(res);
-        if (res) {
-          toast.success("Repositório excluido com sucesso!");
-          loadContent();
-        } else {
-          toast.error("Não foi possível excluir o repositório");
-        }
-      })
-      .catch((err) => {
-        toast.error("2 Não foi possível excluir o repositório");
-      });
   };
 
   const handleDeleteAll = () => {
@@ -139,13 +122,6 @@ const RepositoriesList = () => {
               }}
             >
               <p>{element.name}</p>
-
-              <button
-                onClick={() => handleDelete(element)}
-                className="btnDeletar"
-              >
-                <FaTrashAlt className="trashIcon" />
-              </button>
             </DataGrid>
           );
         })}

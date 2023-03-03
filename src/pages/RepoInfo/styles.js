@@ -40,6 +40,15 @@ export const IconHeart = styled.div`
   }
 `;
 
+export const Trash = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  :hover {
+    cursor: pointer;
+  }
+`;
+
 export const Content = styled.div`
   background-color: var(--color-white);
   box-shadow: var(--shadow-box);

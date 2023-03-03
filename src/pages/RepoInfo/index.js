@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-import { Container, Content, DataGrid, IconHeart } from "./styles.js";
+import { Container, Content, DataGrid, IconHeart, Trash } from "./styles.js";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import Requests from "../../services/requests.js";
 import toast, { Toaster } from "react-hot-toast";
-import { isDisabled } from "@testing-library/user-event/dist/utils/index.js";
+import { useNavigate } from "react-router-dom";
+import { FaTrashAlt } from "react-icons/fa";
 
 const RepoInfo = () => {
+  const navigate = useNavigate();
   const selectedRepositoryJson = sessionStorage.getItem("elemento");
 
   const selectedRepository = JSON.parse(selectedRepositoryJson);
@@ -19,11 +21,28 @@ const RepoInfo = () => {
   });
 
   const handleCreate = () => {
-    Requests.addFavorite(selectedRepository.id).then((res) => {
+    Requests.addFavorite(selectedRepository).then((res) => {
       if (res.id) {
         console.log(res.id);
       }
     });
+  };
+
+  const handleDelete = (item) => {
+    Requests.deleteReposId(item.id)
+      .then((res) => {
+        console.log(res);
+        if (res) {
+          toast.success("Repositório excluido com sucesso!");
+          navigate("/repositories");
+        } else {
+          toast.error("Não foi possível excluir o repositório");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.error("2 Não foi possível excluir o repositório");
+      });
   };
 
   const [favorite, setFavorite] = useState(false);
@@ -32,6 +51,9 @@ const RepoInfo = () => {
       <Toaster />
       <Content>
         <DataGrid>
+          <Trash onClick={() => handleDelete(selectedRepository)}>
+            <FaTrashAlt size={24} />
+          </Trash>
           <IconHeart
             onClick={() => {
               handleCreate();

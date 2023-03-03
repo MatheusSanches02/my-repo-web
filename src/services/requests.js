@@ -57,7 +57,7 @@ class Requests {
 
   static deleteReposId = async (id) => {
     try {
-      const response = await api.delete("/deleteId", id);
+      const response = await api.delete(`/deleteId/${id}`);
       return response.data;
     } catch (err) {
       console.log(err.message);
